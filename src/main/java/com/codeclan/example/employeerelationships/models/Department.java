@@ -1,10 +1,24 @@
 package com.codeclan.example.employeerelationships.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 
+@Entity
+@Table(name = "departments")
 public class Department {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @JsonIgnoreProperties({"department"})
+    @OneToMany(mappedBy = "department")
     private ArrayList<Employee> employees;
 
     public Department(String name, ArrayList<Employee> employees) {
