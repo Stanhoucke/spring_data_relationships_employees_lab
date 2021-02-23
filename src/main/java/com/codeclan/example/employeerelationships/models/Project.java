@@ -6,6 +6,7 @@ import sun.jvm.hotspot.memory.Generation;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="projects")
@@ -39,9 +40,9 @@ public class Project {
                     updatable = false
             )}
     )
-    private ArrayList<Employee> employees;
+    private List<Employee> employees;
 
-    public Project(String name, int duration, ArrayList<Employee> employees) {
+    public Project(String name, int duration) {
         this.name = name;
         this.duration = duration;
         this.employees = new ArrayList<Employee>();
@@ -73,11 +74,11 @@ public class Project {
         this.duration = duration;
     }
 
-    public ArrayList<Employee> getEmployees() {
+    public List<Employee> getEmployees() {
         return employees;
     }
 
-    public void setEmployees(ArrayList<Employee> employees) {
+    public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
 
